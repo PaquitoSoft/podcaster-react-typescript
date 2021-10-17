@@ -1,4 +1,4 @@
-import lscache from 'lscache';
+import * as localStorage from './local-storage';
 
 import Dictionary from '../types/dictionary-type';
 import PodcasterError from '../types/error-type';
@@ -9,7 +9,9 @@ type GetDataRequest = {
 	headers?: Dictionary<string>;
 };
 
-const parsersMap: Dictionary<Function> = {
+type ResponseParser = (response: Response) => unknown;
+
+const parsersMap: Dictionary<ResponseParser> = {
 	'base': (response: Response) => response.text(),
 	'text/plain': () => false,
 	'text/html': () => false,
@@ -19,13 +21,13 @@ const parsersMap: Dictionary<Function> = {
 
 function parseResponse(response: Response) {
 	const contentType = response.headers.get('content-type') ||'base';
-	const parser: Function = parsersMap[contentType] || parsersMap.base;
+	const parser: ResponseParser = parsersMap[contentType] || parsersMap.base;
 
 	return parser(response);
 }
 
 export async function getData({ url, headers, ttl }: GetDataRequest): Promise<any> {
-	let result: any = lscache.get(url);
+	const result: any = localStorage.read(url);
 
 	if (result) {
 		return Promise.resolve(result);
@@ -43,7 +45,7 @@ export async function getData({ url, headers, ttl }: GetDataRequest): Promise<an
 	const data = await parseResponse(response);
 
 	if (ttl) {
-		lscache.set(url, data, ttl);
+		localStorage.store(url, data, { ttl });
 	}
 
 	return data;

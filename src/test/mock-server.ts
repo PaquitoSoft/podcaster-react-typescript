@@ -1,18 +1,20 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-enum HttpMethod {
+export enum HttpMethod {
 	GET = 'get',
 	POST = 'post'
 }
+
+export type HeadersValidator = (headers: Headers) => void;
 
 // Reference: https://kentcdodds.com/blog/stop-mocking-fetch
 const server = setupServer();
 
 function mockRequest(
 	{ url, responseData, type = HttpMethod.GET, validateHeaders }: 
-		{ url: string, responseData: any, type?: HttpMethod, validateHeaders?: Function }
-) {
+		{ url: string, responseData: any, type?: HttpMethod, validateHeaders?: HeadersValidator }
+): void {
 	server.use(
 		rest[type](url, (req, res, ctx) => {
 			validateHeaders && validateHeaders(req.headers);

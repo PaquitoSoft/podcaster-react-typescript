@@ -1,40 +1,27 @@
-import { useEffect } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route
+} from "react-router-dom";
 
-import { getBestPodcasts, getPodcastDetail } from './apis/podcasts-api';
-
-import logo from './logo.svg';
-import './App.css';
+import PodcastsListView from './components/podcasts-list-view/podcasts-list-view';
+import PodcastDetailView from "./components/podcast-detail-view/podcast-detail-view";
 
 function App() {
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const podcasts = await getBestPodcasts();
-			const podcastDetail = await getPodcastDetail(podcasts[0].id);
-
-			console.log({ podcasts, podcastDetail });
-		};
-
-		fetchData();
-	}, []);
-
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<Router>
+			<Switch>
+				<Route path="/podcast/:podcastId">
+					<PodcastDetailView />
+				</Route>
+				<Route path="/podcast/:podcastId/episode/:episodeId">
+					<div>TBD - Podcast episode detail view</div>
+				</Route>
+				<Route path="/">
+					<PodcastsListView />
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 

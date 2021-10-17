@@ -1,0 +1,14 @@
+.page-with-sidebar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.page-with-sidebar .sidebar-section {
+	width: 24%;
+	margin-bottom: 25px;
+}
+
+.page-with-sidebar .content-section {
+	width: 70%;
+	margin-bottom: 25px;
+}

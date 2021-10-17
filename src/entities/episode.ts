@@ -1,15 +1,15 @@
 import LNEpisode from "../types/ln-episode-type";
 
 class Episode {
-	id: string = '';
-	title: string = '';
-	description: string = ''; // is an html string
-	publishedDate: number = 0;
-	audioUrl: string = '';
-	audioLength: number = 0; // in seconds
-	thumbnailUrl: string = '';
-	imageUrl: string = '';
-	webUrl: string = '';
+	id = '';
+	title = '';
+	description = ''; // is an html string
+	publishedDate = 0;
+	audioUrl = '';
+	audioLength = 0; // in seconds
+	thumbnailUrl = '';
+	imageUrl = '';
+	webUrl = '';
 
 	constructor(apiEpisode: LNEpisode) {
 		this.id = apiEpisode.id;

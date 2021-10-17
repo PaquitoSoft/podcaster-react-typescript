@@ -2,16 +2,16 @@ import LNPodcast from '../types/ln-podcast-type';
 import Episode from './episode';
 
 class Podcast {
-	id: string = '';
-	title: string = '';
-	description: string = ''; // is an html string
-	author: string = '';
-	thumbnailUrl: string = '';
-	imageUrl: string = '';
-	webUrl: string = '';
-	episodesCount: number = 0;
-	language: string = '';
-	country: string = '';
+	id = '';
+	title = '';
+	description = ''; // is an html string
+	author = '';
+	thumbnailUrl = '';
+	imageUrl = '';
+	webUrl = '';
+	episodesCount = 0;
+	language = '';
+	country = '';
 	episodes: Episode[] = [];
 
 	constructor(apiPodcast: LNPodcast) {
@@ -30,6 +30,6 @@ class Podcast {
 			this.episodes = apiPodcast.episodes.map(apiEpisode => new Episode(apiEpisode));
 		}
 	}
-};
+}
 
 export default Podcast;

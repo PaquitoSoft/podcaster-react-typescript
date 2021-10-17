@@ -1,6 +1,9 @@
 import { mockRequest } from '../../test/mock-server';
+import * as localStorage from '../local-storage';
 
 import { getData } from "../http-request";
+
+jest.mock('../local-storage');
 
 describe('HTTP Request service', () => {
 
@@ -24,7 +27,7 @@ describe('HTTP Request service', () => {
 			url: FAKE_URL,
 			responseData: fakeData,
 			// TODO: How can I improve this so I don't need to be so verbose for this callback typing
-			validateHeaders: (headers: { get: (headerName: string) => string; }) => {
+			validateHeaders: (headers: Headers) => {
 				expect(headers.get('X-fake-header')).toBe('foobar');
 			}
 		});
@@ -33,7 +36,18 @@ describe('HTTP Request service', () => {
 		expect(data).toEqual(fakeData);
 	});
 
-	it.todo('Should handle TTL');
+	it('Should handle TTL', async () => {
+		const fakeData = { foo: 'bar' };
+		const ttl = 15;
+		mockRequest({
+			url: FAKE_URL,
+			responseData: fakeData
+		});
+
+		const data = await getData({ url: FAKE_URL, ttl });
+		expect(data).toEqual(fakeData);
+		expect(localStorage.store).toHaveBeenCalledWith(FAKE_URL, fakeData, { ttl });
+	});
 
 });
 

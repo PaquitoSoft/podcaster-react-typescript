@@ -3,6 +3,7 @@ import LNPodcast from "../types/ln-podcast-type";
 
 import { getData } from "../services/http-request"
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 function request(path: string, params: object) {
 	const urlParams = new URLSearchParams(Object.entries(params));
 	return getData({
