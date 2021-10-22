@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Podcast from "../../entities/podcast";
 import { getBestPodcasts } from "../../apis/podcasts-api";
-import useRemoteData from '../_shared/layout/use-remote-data/use-remote-data';
+import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 
 type HookState = {
 	podcasts: Podcast[];

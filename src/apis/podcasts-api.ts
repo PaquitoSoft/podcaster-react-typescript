@@ -35,7 +35,7 @@ export async function getBestPodcasts(): Promise<Podcast[]> {
 
 export async function getPodcastDetail(podcastId: string): Promise<Podcast> {
 	const data: LNPodcast = await request(`/podcasts/${podcastId}`, {
-		next_episode_pub_date: 1479154463000,
+		// next_episode_pub_date: 1479154463000,
 		sort: 'recent_first'
 	});
 

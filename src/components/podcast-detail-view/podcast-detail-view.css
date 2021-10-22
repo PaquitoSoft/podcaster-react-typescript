@@ -1,0 +1,27 @@
+.podcast-episodes-count {
+	margin-bottom: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	padding-left: 15px;
+}
+.podcast-episodes table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: 0;
+}
+.podcast-episodes table thead {
+	text-align: left;
+}
+.podcast-episodes a {
+	color: #337ab7;
+}
+.podcast-episodes table th, .podcast-episodes table td {
+	padding: 8px;
+	border-bottom: 2px solid #ddd;
+}
+.podcast-episodes table > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+.podcast-episode-summary .duration {
+	text-align: center;
+}
