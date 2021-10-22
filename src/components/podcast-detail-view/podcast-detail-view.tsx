@@ -20,23 +20,13 @@ function PodcastDetailView() {
 	const { data, error, isLoading } = useRemoteData(loader);
 	const podcast = data as Podcast;
 
-	if (!podcast) {
-		return (
-			<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
-				<div>Loading...</div>
-			</PodcastLayout>
-		);
-	}
-
-	console.log({ podcast });
-
 	return (
 		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
 			 <div className="podcast-detail-page page-with-sidebar">
 				<section className="content-section">
 					<div className="section podcast-episodes-count">
 						<span>
-							Episodes: {podcast.episodes.length}
+							Episodes: {podcast?.episodes.length}
 						</span>
 					</div>
 					<div className="section podcast-episodes">
@@ -49,11 +39,11 @@ function PodcastDetailView() {
 								</tr>
 							</thead>
 							<tbody>
-								{podcast.episodes.map(episode => 
+								{podcast?.episodes.map(episode => 
 									<tr className="podcast-episode-summary" key={episode.id}>
 										<td>
 											<Link
-												to={`/podcast/${podcast.id}/episode/${episode.id}`}
+												to={`/podcast/${podcast?.id}/episode/${episode.id}`}
 											>{episode.title}</Link>
 										</td>
 										<td>{episode.publishedDate}</td>

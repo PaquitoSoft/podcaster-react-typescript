@@ -3,7 +3,7 @@ type Props = {
 }
 
 function TimeFormatter({ seconds }: Props) {
-	// Reference
+	// Reference https://stackoverflow.com/a/25279340
 	const date = new Date(0);
 	date.setSeconds(seconds)
 	const value = date.toISOString().substr(11, 8);

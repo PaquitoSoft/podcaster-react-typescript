@@ -14,7 +14,8 @@ function PodcastLayout({ podcast, isLoading = false, error, children }: Props) {
 		<DefaultLayout className="page-with-sidebar" isLoading={isLoading} error={error}>
 			<PodcastSidebarInfo className="sidebar-section" podcast={podcast} />
 			<section className="content-section">
-				{children}
+				{!podcast && <div>Loading...</div>}
+				{!!podcast && children}
 			</section>
 		</DefaultLayout>
 	);
