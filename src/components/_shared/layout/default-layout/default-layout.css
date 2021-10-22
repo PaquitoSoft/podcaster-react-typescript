@@ -30,6 +30,9 @@ a:hover {
 	text-align: center;
 }
 
+.layout {
+	position: relative;
+}
 
 .main-content {
 	position: relative;

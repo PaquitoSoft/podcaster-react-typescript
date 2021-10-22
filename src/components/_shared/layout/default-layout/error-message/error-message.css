@@ -1,0 +1,7 @@
+.error-message {
+	position: absolute;
+	border: 1px solid red;
+	color: red;
+	border-radius: 2px;
+	top: 16px;
+}
