@@ -10,17 +10,13 @@ describe('PodcastsListView', () => {
 
 	const PODCAST_CARD_TEST_ID = 'podcast-card';
 
-	it('Should render the filter and an empty list', () => {
-		mockBestPodcastsRequest();
-		renderWithRouter(<PodcastsListView />);
-
-		expect(screen.getByPlaceholderText('Filter podcasts...')).toBeInTheDocument();
-		expect(screen.queryByTestId(PODCAST_CARD_TEST_ID)).not.toBeInTheDocument();
-	});
-
 	it('Should render async loaded list', async () => {
 		mockBestPodcastsRequest();
 		renderWithRouter(<PodcastsListView />);
+
+		// No list while fetching remote data
+		expect(screen.getByPlaceholderText('Filter podcasts...')).toBeInTheDocument();
+		expect(screen.queryByTestId(PODCAST_CARD_TEST_ID)).not.toBeInTheDocument();
 
 		const podcasts = await screen.findAllByTestId(PODCAST_CARD_TEST_ID);
 		expect(podcasts).toHaveLength(100);
