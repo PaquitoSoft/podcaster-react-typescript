@@ -32,6 +32,7 @@ jobs:
         run: npm run build
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Publish in Surge
         uses: dswistowski/surge-sh-action@v1
