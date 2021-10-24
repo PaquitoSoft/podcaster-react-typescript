@@ -20,7 +20,7 @@ const parsersMap: Dictionary<ResponseParser> = {
 };
 
 function parseResponse(response: Response) {
-	const contentType = response.headers.get('content-type') ||'base';
+	const contentType = response.headers.get('content-type') || 'base';
 	const parser: ResponseParser = parsersMap[contentType] || parsersMap.base;
 
 	return parser(response);
