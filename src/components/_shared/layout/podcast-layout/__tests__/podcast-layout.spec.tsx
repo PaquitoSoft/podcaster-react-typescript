@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../../test/custom-render';
-import { getFakePodcast } from '../../../../__fixtures__/podcast-fixture';
+import { renderWithRouter } from '../../../../../support/custom-render';
+import { getFakePodcast } from '../../../../__fixtures__/podcasts-fixtures';
 
 import PodcastLayout from '../podcast-layout';
 

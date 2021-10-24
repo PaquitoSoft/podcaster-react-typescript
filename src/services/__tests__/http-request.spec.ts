@@ -1,4 +1,4 @@
-import { mockRequest } from '../../test/mock-server';
+import { mockRequest } from '../../support/mock-server';
 import * as localStorage from '../local-storage';
 
 import { getData } from "../http-request";

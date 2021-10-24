@@ -8,7 +8,7 @@ type Props = {
 function PodcastsFilter({ filteredPodcastsCount, onFilter }: Props) {
 	return (
 		<div className="podcasts-filter">
-			<span className="badge">{filteredPodcastsCount}</span>
+			<span className="badge" data-testid="podcast-filter-count">{filteredPodcastsCount}</span>
 			<input 
 				type="text" 
 				name="filter-value" 

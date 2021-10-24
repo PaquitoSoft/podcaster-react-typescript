@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../../test/custom-render';
+import { renderWithRouter } from '../../../../../support/custom-render';
 
 import DefaultLayout from '../default-layout';
 

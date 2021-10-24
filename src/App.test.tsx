@@ -1,13 +1,11 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+
+import { mockBestPodcastsRequest } from './support/mock-server';
+
 import App from './App';
-import { mockRequest } from './test/mock-server';
 
 test('renders learn react link', () => {
-	mockRequest({
-		url: 'https://listen-api.listennotes.com/api/v2/best_podcasts',
-		responseData: {}
-	});
+	mockBestPodcastsRequest();
 
 	render(<App />);
 	const linkElement = screen.getByText(/Podcaster/i);

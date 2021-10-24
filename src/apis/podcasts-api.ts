@@ -41,7 +41,3 @@ export async function getPodcastDetail(podcastId: string): Promise<Podcast> {
 
 	return new Podcast(data);
 }
-
-// function getEpisodeDetail() {
-// 	https://listen-api.listennotes.com/api/v2/episodes/6b6d65930c5a4f71b254465871fed370 // episodeId
-// }

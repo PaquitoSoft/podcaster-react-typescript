@@ -9,7 +9,7 @@ type Props = {
 
 function PodcastCard({ podcast }: Props) {
 	return (
-		<div className="podcast-card box">
+		<div className="podcast-card box" data-testid="podcast-card">
 			<Link to={`/podcast/${podcast.id}`}>
 				<div className="box-icon">
 					<img src={podcast.imageUrl} alt={podcast.title} />

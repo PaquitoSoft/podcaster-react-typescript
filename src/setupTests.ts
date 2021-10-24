@@ -4,7 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-import { server } from './test/mock-server';
+import { server } from './support/mock-server';
 
 // Reference: https://kentcdodds.com/blog/stop-mocking-fetch
 beforeAll(() => server.listen())
