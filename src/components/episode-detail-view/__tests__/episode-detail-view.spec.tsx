@@ -22,7 +22,7 @@ describe('EpisodeDetailView', () => {
 		const { container } = renderWithRouter(<EpisodeDetailView />);
 
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
-		// No podacst nor episode content while fetching remote data
+		// No podcast nor episode content while fetching remote data
 		expect(screen.queryByText(mockFakeResponse.title)).toBeNull();
 		expect(screen.queryByText(mockFakeResponse.episodes[0].title)).toBeNull();
 
