@@ -1,5 +1,6 @@
 import { mockRequest } from '../../support/mock-server';
 import * as localStorage from '../local-storage';
+import PodcasterError from '../../types/error-type';
 
 import { getData } from "../http-request";
 
@@ -26,7 +27,6 @@ describe('HTTP Request service', () => {
 		mockRequest({
 			url: FAKE_URL,
 			responseData: fakeData,
-			// TODO: How can I improve this so I don't need to be so verbose for this callback typing
 			validateHeaders: (headers: Headers) => {
 				expect(headers.get('X-fake-header')).toBe('foobar');
 			}
@@ -47,6 +47,27 @@ describe('HTTP Request service', () => {
 		const data = await getData({ url: FAKE_URL, ttl });
 		expect(data).toEqual(fakeData);
 		expect(localStorage.store).toHaveBeenCalledWith(FAKE_URL, fakeData, { ttl });
+	});
+
+	it.only('Should handle response error', async () => {
+		const statusCode = 412;
+		mockRequest({
+			url: FAKE_URL,
+			statusCode,
+			responseData: { foo: 'bar' }
+		});
+
+		expect.assertions(1);
+		try {
+			await getData({ url: FAKE_URL });
+			expect(true).toBe(false);
+		} catch (error) {
+			// Jest ESLint rules complains about this code, but it's actually
+			// in the Jest documentations about testing async behaviour
+			// Reference: https://jestjs.io/docs/tutorial-async#error-handling
+			// eslint-disable-next-line jest/no-conditional-expect
+			expect((error as PodcasterError).statusCode).toBe(statusCode);
+		}
 	});
 
 });

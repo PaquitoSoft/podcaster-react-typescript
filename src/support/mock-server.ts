@@ -16,15 +16,26 @@ export type HeadersValidator = (headers: Headers) => void;
 // Reference: https://kentcdodds.com/blog/stop-mocking-fetch
 const server = setupServer();
 
-const mockRequest = (
-	{ url, responseData, type = HttpMethod.GET, validateHeaders }: 
-		{ url: string, responseData: any, type?: HttpMethod, validateHeaders?: HeadersValidator }
-): void => {
+type MockRequestConfig = {
+	url: string,
+	responseData: any,
+	type?: HttpMethod,
+	statusCode?: number,
+	validateHeaders?: HeadersValidator
+};
+
+const mockRequest = ({
+	url,
+	responseData,
+	type = HttpMethod.GET,
+	statusCode = 200,
+	validateHeaders 
+}: MockRequestConfig): void => {
 	server.use(
 		rest[type](url, (req, res, ctx) => {
 			validateHeaders && validateHeaders(req.headers);
 			return res(
-				ctx.status(200),
+				ctx.status(statusCode),
 				ctx.json((typeof responseData === 'function') ? responseData() : responseData)
 			);
 		})
