@@ -1,6 +1,9 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { getBestPodcastsResponseData } from '../components/__fixtures__/ln-fixtures';
+import {
+	getBestPodcastsResponseData,
+	getPodcastDetailResponseData
+} from '../components/__fixtures__/ln-fixtures';
 import LNPodcast from '../types/ln-podcast-type';
 
 export enum HttpMethod {
@@ -38,5 +41,19 @@ const mockBestPodcastsRequest = (fakePodcasts?: LNPodcast[]): LNPodcast[] => {
 	return responseData.podcasts;
 };
 
-export { server, rest, mockRequest, mockBestPodcastsRequest };
+const mockPodcastDetailRequest = (podcastId?: string) => {
+	const responseData = getPodcastDetailResponseData();
+	mockRequest({
+		url: `https://listen-api.listennotes.com/api/v2/podcasts/${podcastId || responseData.id}`,
+		responseData
+	})
+};
+
+export {
+	server,
+	rest,
+	mockRequest,
+	mockBestPodcastsRequest,
+	mockPodcastDetailRequest
+};
 

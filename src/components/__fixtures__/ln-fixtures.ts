@@ -1,4 +1,5 @@
 import { v4 as randomString } from "uuid";
+
 import LNPodcast from "../../types/ln-podcast-type";
 
 type LNBestPodcastsResponse = {
@@ -429,9 +430,173 @@ const fakeLNPodcastsResponse: LNBestPodcastsResponse = {
 	"listennotes_url": "https://www.listennotes.com/best-music-podcasts-134/"
 };
 
+const fakeLNPodcastDetailResponse: LNPodcast = {
+	"id": "bcfaff85c8124f028c457236639d6f1b",
+	"title": "My Turning Point",
+	"publisher": "LiveXLive",
+	"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+	"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+	"listennotes_url": "https://www.listennotes.com/c/bcfaff85c8124f028c457236639d6f1b/",
+	"total_episodes": 101,
+	"explicit_content": true,
+	"description": "Music journalist Steve Baltin gets personal with major artists and explores the stories behind pivotal moments that changed the course of their careers.",
+	"itunes_id": 1474410204,
+	"latest_pub_date_ms": 1634540400000,
+	"earliest_pub_date_ms": 1564011087097,
+	"language": "English",
+	"country": "United States",
+	"website": "https://www.podcastone.com/pd/My-Turning-Point?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+	"is_claimed": false,
+	"type": "episodic",
+	"genre_ids": [134, 122, 100, 67],
+	"episodes": [{
+		"id": "d50d0a899ef649cbaeff66c9b08dc49e",
+		"title": "Duran Duran",
+		"description": "With a new album, \"Future Past,\" out this week, bassist John Taylor of rock icons Duran Duran joins host Steve Baltin on this week's \"My Turning Point\" to discuss the band's 40-year career, new music, and more.",
+		"pub_date_ms": 1634540400000,
+		"audio": "https://www.listennotes.com/e/p/d50d0a899ef649cbaeff66c9b08dc49e/",
+		"audio_length_sec": 2620,
+		"listennotes_url": "https://www.listennotes.com/e/d50d0a899ef649cbaeff66c9b08dc49e/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Duran-Duran?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "1af58e1f-3e95-4df9-b87f-3f80baa0d0a4"
+	}, {
+		"id": "74006d9321334fcaa47bd8d412349524",
+		"title": "Gerard Way of My Chemical Romance",
+		"description": "On this week's \"My Turning Point,\" for the one hundredth episode, My Chemical Romance's Gerard Way shares how he relates to Dave Chapelle, his friendship with Billy Corgan, why he is enjoying music more now, and much more. This is a can't-miss conversation.",
+		"pub_date_ms": 1634022000000,
+		"audio": "https://www.listennotes.com/e/p/74006d9321334fcaa47bd8d412349524/",
+		"audio_length_sec": 3409,
+		"listennotes_url": "https://www.listennotes.com/e/74006d9321334fcaa47bd8d412349524/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Gerard-Way-of-My-Chemical-Romance?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "4ea2eff5-02d9-4d41-adab-d23870d9e99c"
+	}, {
+		"id": "4afc3b244ed04076959efccf946db4ba",
+		"title": "Natalie Imbruglia",
+		"description": "Back with \"Firebird,\" her first album in six years, Natalie Imbruglia joins host Steve Baltin on this week's \"My Turning Point\" to talk about new music, motherhood, and much more.",
+		"pub_date_ms": 1633718641000,
+		"audio": "https://www.listennotes.com/e/p/4afc3b244ed04076959efccf946db4ba/",
+		"audio_length_sec": 2620,
+		"listennotes_url": "https://www.listennotes.com/e/4afc3b244ed04076959efccf946db4ba/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Natalie-Imbruglia?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "503074e9-72ac-414c-aee3-af277fd81b03"
+	}, {
+		"id": "19af6d7b289c4a12ac00884d3988c7e6",
+		"title": "Billy Idol",
+		"description": "On this week's \"My Turning Point,\" rock icon Billy Idol joins host Steve Baltin for an incredibly revealing and powerful conversation about the perils of fame, how it nearly destroyed him, his new EP, and much more.",
+		"pub_date_ms": 1632726000000,
+		"audio": "https://www.listennotes.com/e/p/19af6d7b289c4a12ac00884d3988c7e6/",
+		"audio_length_sec": 1838,
+		"listennotes_url": "https://www.listennotes.com/e/19af6d7b289c4a12ac00884d3988c7e6/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Billy-Idol?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "b88c018f-325e-40c7-8412-8b13f76dd59e"
+	}, {
+		"id": "e998bbbcb08e437989f4a25ba87fb250",
+		"title": "Kat Von D",
+		"description": "After becoming a pop culture celebrity for her tattoos, makeup, TV work and more, Kat Von D has just realized her debut album. But as she tells host Steve Baltin on this week's My Turning Point, music has been part of her life since she started playing piano as a kid.",
+		"pub_date_ms": 1632121200001,
+		"audio": "https://www.listennotes.com/e/p/e998bbbcb08e437989f4a25ba87fb250/",
+		"audio_length_sec": 2093,
+		"listennotes_url": "https://www.listennotes.com/e/e998bbbcb08e437989f4a25ba87fb250/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Kat-Von-D?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "c285e8c8-31c1-4dd8-8907-968864be266a"
+	}, {
+		"id": "944ebafb098f4cf3b44e629bfe729139",
+		"title": "Common",
+		"description": "On this week's \"My Turning Point,\" rapper/actor Common joins host Steve Baltin to talk about his new album and how being a high school point guard helped pave the way for his ability to collaborate.",
+		"pub_date_ms": 1631516400002,
+		"audio": "https://www.listennotes.com/e/p/944ebafb098f4cf3b44e629bfe729139/",
+		"audio_length_sec": 2414,
+		"listennotes_url": "https://www.listennotes.com/e/944ebafb098f4cf3b44e629bfe729139/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Common?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "45f45104-f7e9-4860-a932-b5c66e6c25c2"
+	}, {
+		"id": "c0b4f46d5f72497db81421c1d0fb8f86",
+		"title": "Dan Reynolds of Imagine Dragons",
+		"description": "Imagine Dragons frontman Dan Reynolds joins host Steve Baltin on this week's \"My Turning Point\" for an incredibly candid conversation on the band's new Rick Rubin-produced album, what the song \"Radioactive\" really means, and the first song that made him cry.",
+		"pub_date_ms": 1630911600003,
+		"audio": "https://www.listennotes.com/e/p/c0b4f46d5f72497db81421c1d0fb8f86/",
+		"audio_length_sec": 1976,
+		"listennotes_url": "https://www.listennotes.com/e/c0b4f46d5f72497db81421c1d0fb8f86/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Dan-Reynolds-of-Imagine-Dragons-19710?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "d5893241-9403-4e4f-afb2-6682289e9331"
+	}, {
+		"id": "f4dfba87e34249d3b78111dc7a9046e7",
+		"title": "David Duchovny",
+		"description": "Actor and author-turned-musician David Duchovny joins host Steve Baltin on this week's \"My Turning Point\" to talk about his third album, \"Gestureland,\" his most embarrassing moment on stage, seeing Prince pre-\"Purple Rain\" and much more.",
+		"pub_date_ms": 1630306800004,
+		"audio": "https://www.listennotes.com/e/p/f4dfba87e34249d3b78111dc7a9046e7/",
+		"audio_length_sec": 2043,
+		"listennotes_url": "https://www.listennotes.com/e/f4dfba87e34249d3b78111dc7a9046e7/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/David-Duchovny-1398?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "fbb4d58b-6fb9-4433-b7eb-2b714e88adbb"
+	}, {
+		"id": "d3eb4cb278654937bda272c6dce4de3d",
+		"title": "Wolf Alice",
+		"description": "U.K. band Wolf Alice have released one of the best rock albums of the year in \"Blue Weekend.\" They join host Steve Baltin on this week's \"My Turning Point\" to talk about the new record and how it is a very Belgium-influenced work.",
+		"pub_date_ms": 1629702000005,
+		"audio": "https://www.listennotes.com/e/p/d3eb4cb278654937bda272c6dce4de3d/",
+		"audio_length_sec": 2192,
+		"listennotes_url": "https://www.listennotes.com/e/d3eb4cb278654937bda272c6dce4de3d/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Wolf-Alice?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "39c9df38-072b-4440-a058-4717edaba943"
+	}, {
+		"id": "37cf2b0caba648cfbbe8491d9c17718c",
+		"title": "Jungle",
+		"description": "Jungle has a superb new album, \"Loving In Stereo.\" The duo's Josh Lloyd-Watson joins host Steve Baltin on this week's \"My Turning Point\" to talk about the new album, their excitement at playing live again, and becoming independent artists for the first time.",
+		"pub_date_ms": 1629097200006,
+		"audio": "https://www.listennotes.com/e/p/37cf2b0caba648cfbbe8491d9c17718c/",
+		"audio_length_sec": 2648,
+		"listennotes_url": "https://www.listennotes.com/e/37cf2b0caba648cfbbe8491d9c17718c/",
+		"image": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"thumbnail": "https://production.listennotes.com/podcasts/my-turning-point-livexlive-o-wcfvqOIru-OCjpfUDdGor.300x300.jpg",
+		"maybe_audio_invalid": false,
+		"explicit_content": true,
+		"link": "https://www.podcastone.com/episode/Jungle?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
+		"guid_from_rss": "122ae41e-3c08-4d8d-90a4-5a02b3357483"
+	}]
+};
+
 export const getBestPodcastsResponseData = (fakePodcasts?: LNPodcast[]): LNBestPodcastsResponse => ({
 	...fakeLNPodcastsResponse,
 	podcasts: fakePodcasts || fakeLNPodcastsResponse.podcasts.map(lnPodcast =>
 		({ ...lnPodcast, id: randomString() })
 	)
 });
+
+export const getPodcastDetailResponseData = (): LNPodcast => ({ ...fakeLNPodcastDetailResponse });
