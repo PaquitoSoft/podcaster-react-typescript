@@ -4,9 +4,9 @@ import {
 	Route
 } from "react-router-dom";
 
-import PodcastsListView from './components/podcasts-list-view/podcasts-list-view';
-import PodcastDetailView from "./components/podcast-detail-view/podcast-detail-view";
-import EpisodeDetailView from "./components/episode-detail-view/episode-detail-view";
+import PodcastsListView from '../podcasts-list-view/podcasts-list-view';
+import PodcastDetailView from "../podcast-detail-view/podcast-detail-view";
+import EpisodeDetailView from "../episode-detail-view/episode-detail-view";
 
 function App() {
 	return (
