@@ -33,8 +33,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: dswistowski/surge-sh-action@v1
       - name: Publish in Surge
+        uses: dswistowski/surge-sh-action@v1
         with:
           domain: podcaster-ts.surge.sh
           project: './build'
