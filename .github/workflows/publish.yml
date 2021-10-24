@@ -30,6 +30,10 @@ jobs:
       # Build project
       - name: Build
         run: npm run build
+        env:
+          REACT_APP_LISTEN_NOTES_API_BASE_URL: ${{ secrets.REACT_APP_LISTEN_NOTES_API_BASE_URL }}
+          REACT_APP_LISTEN_NOTES_API_KEY: ${{ secrets.REACT_APP_LISTEN_NOTES_API_KEY }}
+          REACT_APP_MAIN_PODCAST_GENRE: ${{ secrets.REACT_APP_MAIN_PODCAST_GENRE }}
         
       # Deploy
       - name: Publish in Surge
