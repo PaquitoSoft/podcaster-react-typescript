@@ -1,4 +1,4 @@
-name: Publish
+name: Build and Deploy
 
 # Controls when the workflow will run
 on:
@@ -30,10 +30,8 @@ jobs:
       # Build project
       - name: Build
         run: npm run build
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+        
+      # Deploy
       - name: Publish in Surge
         uses: dswistowski/surge-sh-action@v1
         with:
