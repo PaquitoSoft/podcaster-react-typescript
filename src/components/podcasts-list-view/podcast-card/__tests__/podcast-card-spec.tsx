@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../support/custom-render';
+import { render, screen } from '@testing-library/react';
 import { getFakePodcast } from '../../../__fixtures__/podcasts-fixtures';
 
 import PodcastCard from '../podcast-card';
@@ -7,7 +6,7 @@ import PodcastCard from '../podcast-card';
 describe('PodcastCard', () => {
 	it('Should render podcast card', () => {
 		const fakePodcast = getFakePodcast();
-		renderWithRouter(<PodcastCard podcast={fakePodcast} />);
+		render(<PodcastCard podcast={fakePodcast} />);
 
 		expect(screen.getByRole('link')).toHaveAttribute('href', `/podcast/${fakePodcast.id}`);
 		const image = screen.getByAltText(fakePodcast.title);

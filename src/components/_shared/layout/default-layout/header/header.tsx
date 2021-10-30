@@ -1,18 +1,17 @@
-import { Link } from 'react-router-dom';
+import Link from '../../../link/link';
+import { useLoader } from '../../../loader-provider/loader-provider';
 
 import './header.css';
 
-type Props = {
-	showLoader: boolean
-};
+function Header() {
+	const { isLoading } = useLoader();
 
-function Header({ showLoader }: Props) {
 	return (
 		<header className="header">
 			<h1>
 				<Link to="/">Podcaster</Link>
-				<div 
-					className={`spinner ${showLoader ? '' : 'hidden' }`}
+				<div
+					className={`spinner ${isLoading ? '' : 'hidden' }`}
 					data-testid="loader-indicator"
 				>
 					<div className="double-bounce1"></div>

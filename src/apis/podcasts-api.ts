@@ -1,7 +1,7 @@
 import Podcast from "../entities/podcast";
 import LNPodcast from "../types/ln-podcast-type";
 
-import { getData } from "../services/http-request"
+import { getData } from "../plugins/http-request"
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function request(path: string, params: object) {

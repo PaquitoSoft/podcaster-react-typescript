@@ -10,7 +10,7 @@ describe('App', () => {
 		mockBestPodcastsRequest();
 	
 		render(<App />);
-		const linkElement = screen.getByText(/Podcaster/i);
+		const linkElement = screen.getByText(/Initializing application/i);
 		expect(linkElement).toBeInTheDocument();
 	});
 });

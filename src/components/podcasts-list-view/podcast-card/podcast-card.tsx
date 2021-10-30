@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "../../_shared/link/link";
 import Podcast from "../../../entities/podcast";
 
 import './podcast-card.css';

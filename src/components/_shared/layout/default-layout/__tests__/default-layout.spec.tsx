@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../../support/custom-render';
+import { render, screen } from '@testing-library/react';
 
 import DefaultLayout from '../default-layout';
 
@@ -10,7 +9,7 @@ import DefaultLayout from '../default-layout';
 describe('DefaultLayout', () => {
 	it('Should render header and main content', () => {
 		const mainText = 'Foo Bar';
-		renderWithRouter(<DefaultLayout><span>{mainText}</span></DefaultLayout>);
+		render(<DefaultLayout><span>{mainText}</span></DefaultLayout>);
 
 		// Header title
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
@@ -20,14 +19,14 @@ describe('DefaultLayout', () => {
 
 	it('Should add provided className to main content', () => {
 		const customClass = 'foo';
-		renderWithRouter(<DefaultLayout className={customClass}><span>Bar</span></DefaultLayout>);
+		render(<DefaultLayout className={customClass}><span>Bar</span></DefaultLayout>);
 
 		expect(screen.getByRole('main')).toHaveClass(customClass);
 	});
 
 	it('Should display an error if provided', () => {
 		const errorMessage = 'Ouch!';
-		renderWithRouter(<DefaultLayout error={new Error(errorMessage)}><span>Foo</span></DefaultLayout>);
+		render(<DefaultLayout error={new Error(errorMessage)}><span>Foo</span></DefaultLayout>);
 		
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();
 	});

@@ -49,7 +49,7 @@ describe('HTTP Request service', () => {
 		expect(localStorage.store).toHaveBeenCalledWith(FAKE_URL, fakeData, { ttl });
 	});
 
-	it.only('Should handle response error', async () => {
+	it('Should handle response error', async () => {
 		const statusCode = 412;
 		mockRequest({
 			url: FAKE_URL,

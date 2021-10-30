@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import Podcast from "../../entities/podcast";
-import { getBestPodcasts } from "../../apis/podcasts-api";
-import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 
 type HookState = {
 	podcasts: Podcast[];
-	loadError?: Error;
-	isLoading: boolean
 };
 
 // type HookActions = {
@@ -22,13 +18,11 @@ type HookResponse = {
 	actions: HookActions;
 };
 
-function usePodcastsListView(): HookResponse {
+function usePodcastsListView({ podcasts }: { podcasts: Podcast[] }): HookResponse {
 	const [filterText, setFilterText] = useState('');
-	const [originalPodcasts, setOriginalPodcasts] = useState<Podcast[]>([]);
-	const [filteredPodcasts, setFilteredPodcasts] = useState<Podcast[]>([]);
+	const [originalPodcasts, setOriginalPodcasts] = useState<Podcast[]>(podcasts);
+	const [filteredPodcasts, setFilteredPodcasts] = useState<Podcast[]>(podcasts);
 	
-	const { data: podcasts, error, isLoading } = useRemoteData(getBestPodcasts);
-
 	const filterPodcasts = (text: string) => setFilterText(text);
 	
 	useEffect(() => {
@@ -44,9 +38,7 @@ function usePodcastsListView(): HookResponse {
 
 	return {
 		state: {
-			podcasts: filteredPodcasts,
-			loadError: error as Error,
-			isLoading
+			podcasts: filteredPodcasts
 		},
 		actions: {
 			filterPodcasts

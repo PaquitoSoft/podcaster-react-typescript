@@ -1,29 +1,18 @@
-import { useCallback } from 'react';
-import { useParams } from 'react-router-dom';
-
 import Podcast from '../../entities/podcast';
 import { getPodcastDetail } from '../../apis/podcasts-api';
-
+import { RouteViewProps } from '../_shared/router/router';
+import Dictionary from '../../types/dictionary-type';
 import PodcastLayout from '../_shared/layout/podcast-layout/podcast-layout';
-import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 
 import './episode-detail-view.css';
 
-type ViewURLParams = {
-	podcastId: string;
-	episodeId: string;
-}
 
-function EpisodeDetailView() {
-	const { podcastId, episodeId } = useParams<ViewURLParams>();
-	const loader = useCallback(() => getPodcastDetail(podcastId), [podcastId]);
-
-	const { data, error, isLoading } = useRemoteData(loader);
-	const podcast = data as Podcast;
-	const episode = podcast?.episodes.find(episode => episode.id === episodeId);
+function EpisodeDetailView({ remoteData, request }: RouteViewProps) {
+	const podcast = remoteData as Podcast;
+	const episode = podcast?.episodes.find(episode => episode.id === request.pathParams?.episodeId);
 
 	return (
-		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
+		<PodcastLayout podcast={podcast} error={undefined}>
 			<div className="episode-detail-page page-with-sidebar">
 				<div className="content-section">
 					<div className="episode-detail section">
@@ -39,5 +28,9 @@ function EpisodeDetailView() {
 		</PodcastLayout>
 	);
 }
+
+EpisodeDetailView.fetchData = ({ pathParams }: { pathParams: Dictionary<string>}) =>
+	getPodcastDetail(pathParams.podcastId);
+
 
 export default EpisodeDetailView;

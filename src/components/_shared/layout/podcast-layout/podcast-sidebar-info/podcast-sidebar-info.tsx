@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-
+import Link from '../../../link/link';
 import Podcast from '../../../../../entities/podcast';
 
 import './podcast-sidebar-info.css';

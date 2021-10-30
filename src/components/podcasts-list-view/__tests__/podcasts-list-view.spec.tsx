@@ -1,8 +1,7 @@
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
-import { renderWithRouter } from "../../../support/custom-render";
-import { mockBestPodcastsRequest } from "../../../support/mock-server";
+import { getFakePodcastsList } from "../../__fixtures__/podcasts-fixtures";
 
 import PodcastsListView from "../podcasts-list-view";
 
@@ -11,29 +10,22 @@ describe('PodcastsListView', () => {
 	const PODCAST_CARD_TEST_ID = 'podcast-card';
 
 	it('Should render async loaded list', async () => {
-		mockBestPodcastsRequest();
-		renderWithRouter(<PodcastsListView />);
+		const fakePodcastsList = getFakePodcastsList();
+		render(<PodcastsListView remoteData={fakePodcastsList} />);
 
-		// No list while fetching remote data
-		expect(screen.getByPlaceholderText('Filter podcasts...')).toBeInTheDocument();
-		expect(screen.queryByTestId(PODCAST_CARD_TEST_ID)).not.toBeInTheDocument();
-
-		const podcasts = await screen.findAllByTestId(PODCAST_CARD_TEST_ID);
-		expect(podcasts).toHaveLength(100);
+		const podcasts = screen.getAllByTestId(PODCAST_CARD_TEST_ID);
+		expect(podcasts).toHaveLength(20);
 	});
 
 	it('Should render filtered list', async () => {
-		mockBestPodcastsRequest();
-		renderWithRouter(<PodcastsListView />);
+		const fakePodcastsList = getFakePodcastsList();
+		render(<PodcastsListView remoteData={fakePodcastsList} />);
 
 		let podcasts = screen.queryAllByTestId(PODCAST_CARD_TEST_ID);
-		expect(podcasts).toHaveLength(0);
+		expect(podcasts).toHaveLength(20);
 
+		await userEvent.type(screen.getByRole('textbox'), 'ra');
 		podcasts = await screen.findAllByTestId(PODCAST_CARD_TEST_ID);
-		expect(podcasts).toHaveLength(100);
-		
-		await userEvent.type(screen.getByRole('textbox'), 'drum');
-		podcasts = await screen.findAllByTestId(PODCAST_CARD_TEST_ID);
-		expect(podcasts).toHaveLength(5);
+		expect(podcasts).toHaveLength(4);
 	});
 });

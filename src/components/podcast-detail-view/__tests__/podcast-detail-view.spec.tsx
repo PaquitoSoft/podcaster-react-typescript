@@ -1,38 +1,25 @@
-import { screen } from "@testing-library/react";
-import { renderWithRouter } from "../../../support/custom-render";
-import { mockPodcastDetailRequest } from "../../../support/mock-server";
-import { getPodcastDetailResponseData } from "../../__fixtures__/ln-fixtures";
+import { render, screen } from "@testing-library/react";
+
+import { getFakePodcast } from "../../__fixtures__/podcasts-fixtures";
 
 import PodcastDetailView from '../podcast-detail-view';
 
-const mockFakeResponse = getPodcastDetailResponseData();
-
-jest.mock('react-router-dom', () => ({
-	...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
-	useParams: () => ({
-		podcastId: mockFakeResponse.id
-	}),
-}));
-
-
 describe('PodcastDetailView', () => {
 	it('Should render podcast info and its episodes list', async() => {
-		mockPodcastDetailRequest();
-		const {container } = renderWithRouter(<PodcastDetailView />);
+		const mockPodcast = getFakePodcast();
+		const mockRequest = {
+			url: `/podcast/${mockPodcast.id}/episode/${mockPodcast.episodes[0].id}`,
+			searchParams: {},
+			pathParams: {
+				podcastId: mockPodcast.id
+			}
+		};
+		const {container } = render(<PodcastDetailView remoteData={mockPodcast} request={mockRequest} />);
 
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
-		// No podcast nor episode content while fetching remote data
-		expect(screen.queryByText(mockFakeResponse.title)).toBeNull();
-		expect(screen.queryByText('Episodes')).toBeNull();
-
-		const podcastTitle = await screen.findByText(mockFakeResponse.title);
-		const podcastAuthor = await screen.findByText(mockFakeResponse.publisher);
-		const episodesCount = await screen.findByText(`Episodes: ${mockFakeResponse.episodes.length}`);
-		const episodesRows = container.querySelectorAll('tbody tr');
-
-		expect(podcastTitle).toBeInTheDocument();
-		expect(podcastAuthor).toBeInTheDocument();
-		expect(episodesCount).toBeInTheDocument();
-		expect(episodesRows).toHaveLength(mockFakeResponse.episodes.length);
+		expect(screen.getByText(mockPodcast.title)).toBeInTheDocument();
+		expect(screen.getByText(mockPodcast.author)).toBeInTheDocument();
+		expect(screen.getByText(`Episodes: ${mockPodcast.episodes.length}`)).toBeInTheDocument();
+		expect(container.querySelectorAll('tbody tr')).toHaveLength(mockPodcast.episodes.length);
 	});
 });

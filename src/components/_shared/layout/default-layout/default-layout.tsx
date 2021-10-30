@@ -6,14 +6,13 @@ import './default-layout.css';
 type Props = {
 	children: JSX.Element | JSX.Element[],
 	className?: string,
-	isLoading?: boolean,
 	error?: Error
 };
 
-function Layout({ children, className, error, isLoading = false }: Props) {
+function Layout({ children, className, error }: Props) {
 	return (
 		<div id="app" className="layout">
-			<Header showLoader={isLoading} />
+			<Header />
 			{error && <ErrorMessage error={error} />}
 
 			<main className={`main-content ${className || ''}`}>{children}</main>
