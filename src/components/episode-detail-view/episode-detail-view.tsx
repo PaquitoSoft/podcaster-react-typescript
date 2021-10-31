@@ -24,13 +24,13 @@ function EpisodeDetailView() {
 
 	return (
 		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
-			<div className="episode-detail-page page-with-sidebar">
+			<div className="episode-detail-view page-with-sidebar">
 				<div className="content-section">
-					<div className="episode-detail section">
-						<div className="title">{episode?.title}</div>
-						<div className="subtitle" dangerouslySetInnerHTML={{ __html: episode?.description || '' }}></div>
+					<div className="section">
+						<div className="episode-detail-view__title">{episode?.title}</div>
+						<div className="episode-detail-view__subtitle" dangerouslySetInnerHTML={{ __html: episode?.description || '' }}></div>
 						<hr/>
-						<div className="player">
+						<div className="episode-detail-view__player">
 							<audio src={episode?.audioUrl} controls></audio>
 						</div>
 					</div>

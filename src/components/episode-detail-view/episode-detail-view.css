@@ -1,14 +1,11 @@
-.episode-detail {
-	margin: 10px;
-}
-.episode-detail .title {
+.episode-detail-view__title {
 	font-weight: bold;
 	font-size: 24px;
 	margin-bottom: 5px;
 }
-.episode-detail .subtitle {
+.episode-detail-view__subtitle {
 	font-style: italic;
 }
-.episode-detail .player audio {
+.episode-detail-view__player audio {
 	width: 100%;
 }

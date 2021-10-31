@@ -21,7 +21,7 @@ function PodcastsListView() {
 		<Layout isLoading={isLoading} error={loadError} >
 			<div className="podcasts-list-view">
 				<PodcastsFilter filteredPodcastsCount={podcasts.length} onFilter={filterPodcasts} />
-				<div className="podcasts-list">
+				<div className="podcasts-list-view__list">
 					{podcasts.map(podcast => <PodcastCard key={podcast.id} podcast={podcast} />)}
 				</div>
 			</div>

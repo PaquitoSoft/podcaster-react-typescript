@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from '../../../link/link';
 
 import './header.css';
 
@@ -12,11 +12,11 @@ function Header({ showLoader }: Props) {
 			<h1>
 				<Link to="/">Podcaster</Link>
 				<div 
-					className={`spinner ${showLoader ? '' : 'hidden' }`}
+					className={`header__spinner header__spinner--${showLoader ? 'on' : 'off' }`}
 					data-testid="loader-indicator"
 				>
-					<div className="double-bounce1"></div>
-					<div className="double-bounce2"></div>
+					<div className="header__double-bounce1"></div>
+					<div className="header__double-bounce2"></div>
 				</div>
 			</h1>
 		</header>

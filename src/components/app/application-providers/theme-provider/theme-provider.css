@@ -1,0 +1,37 @@
+:root {
+	--foregroung-color: #000;
+	--background-color-000: #fff;
+	--background-color-010: #e5e5e5;
+	--background-color-020: #cccccc;
+	--primary-color-000: #337ab7;
+	--primary-color-010: #23527c;
+	--alert-color-000: #ff0000;
+
+	--main-content-width: 85%;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foregroung-color: #fff;
+		--background-color-000: #000;
+		--background-color-010: #1d1c1c;
+		--background-color-020: #2b2929;
+		--primary-color-000: #337ab7;
+		--primary-color-010: #23527c;
+	}	
+}
+
+html {
+	font-family: Arial;
+}
+
+body {
+	background-color: var(--background-color-000);
+	margin: 0;
+	padding-bottom: 20px;
+}
+
+/* TODO: Remove this helper class */
+.text-center {
+	text-align: center;
+}

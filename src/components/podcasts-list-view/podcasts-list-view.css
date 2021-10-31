@@ -1,4 +1,4 @@
-.podcasts-list {
+.podcasts-list-view__list {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

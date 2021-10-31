@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPodcastDetail } from '../../apis/podcasts-api';
 import Podcast from '../../entities/podcast';
 
+import Link, { LinkDecoration } from '../_shared/link/link';
 import PodcastLayout from '../_shared/layout/podcast-layout/podcast-layout';
 import TimeFormatter from '../_shared/time-formatter/time-formatter';
 import useRemoteData from '../_shared/use-remote-data/use-remote-data';
@@ -22,15 +23,15 @@ function PodcastDetailView() {
 
 	return (
 		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
-			 <div className="podcast-detail-page page-with-sidebar">
+			 <div className="podcast-detail-view page-with-sidebar">
 				<section className="content-section">
-					<div className="section podcast-episodes-count">
+					<div className="section podcast-detail-view__episodes-count">
 						<span>
 							Episodes: {podcast?.episodes.length}
 						</span>
 					</div>
-					<div className="section podcast-episodes">
-						<table className="table table-hover table-striped">
+					<div className="section">
+						<table className="podcast-detail-view__table">
 							<thead>
 								<tr>
 									<th>Title</th>
@@ -40,14 +41,15 @@ function PodcastDetailView() {
 							</thead>
 							<tbody>
 								{podcast?.episodes.map(episode => 
-									<tr className="podcast-episode-summary" key={episode.id}>
+									<tr className="podcast-detail-view__row" key={episode.id}>
 										<td>
 											<Link
 												to={`/podcast/${podcast?.id}/episode/${episode.id}`}
+												decoration={LinkDecoration.UNDERLINE}
 											>{episode.title}</Link>
 										</td>
-										<td>{episode.publishedDate}</td>
-										<td className="duration">
+										<td>{episode.publishedDate.toDateString()}</td>
+										<td className="podcast-detail-view__episode-duration">
 											<TimeFormatter seconds={episode.audioLength} />
 										</td>
 									</tr>

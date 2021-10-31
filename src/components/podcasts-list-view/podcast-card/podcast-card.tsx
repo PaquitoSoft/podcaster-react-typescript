@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import Podcast from "../../../entities/podcast";
+import Link, { LinkType } from "../../_shared/link/link";
 
 import './podcast-card.css';
 
@@ -9,15 +9,15 @@ type Props = {
 
 function PodcastCard({ podcast }: Props) {
 	return (
-		<div className="podcast-card box" data-testid="podcast-card">
-			<Link to={`/podcast/${podcast.id}`}>
-				<div className="box-icon">
-					<img src={podcast.imageUrl} alt={podcast.title} />
+		<div className="podcast-card" data-testid="podcast-card">
+			<Link to={`/podcast/${podcast.id}`} type={LinkType.SECONDARY}>
+				<div className="podcast-card__cover-container">
+					<img className="podcast-card__cover-image" src={podcast.imageUrl} alt={podcast.title} />
 				</div>
-				<div className="info">
-					<h4 className="podcast-title">{podcast.title}</h4>
+				<div className="podcast-card__info">
+					<h4 className="podcast-card__title">{podcast.title}</h4>
 					<p>
-						<span className="podcast-author">
+						<span className="podcast-cart__author">
 							<span>Author:&nbsp;</span>
 							<span>{podcast.author}</span>
 						</span>

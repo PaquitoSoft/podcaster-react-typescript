@@ -1,27 +1,25 @@
-.podcast-episodes-count {
+.podcast-detail-view__episodes-count {
 	margin-bottom: 20px;
 	font-size: 22px;
 	font-weight: bold;
 	padding-left: 15px;
 }
-.podcast-episodes table {
+.podcast-detail-view__table {
 	width: 100%;
 	border-spacing: 0;
 	border-collapse: 0;
 }
-.podcast-episodes table thead {
+.podcast-detail-view__table thead {
 	text-align: left;
 }
-.podcast-episodes a {
-	color: #337ab7;
-}
-.podcast-episodes table th, .podcast-episodes table td {
+.podcast-detail-view__table th,
+.podcast-detail-view__table td {
 	padding: 8px;
 	border-bottom: 2px solid #ddd;
 }
-.podcast-episodes table > tbody > tr:nth-of-type(odd) {
+.podcast-detail-view__table > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
-.podcast-episode-summary .duration {
+.podcast-detail-view__episode-duration {
 	text-align: center;
 }

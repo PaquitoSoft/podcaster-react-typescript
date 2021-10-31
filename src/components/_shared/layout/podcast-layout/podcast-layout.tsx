@@ -11,7 +11,7 @@ type Props = {
 
 function PodcastLayout({ podcast, isLoading = false, error, children }: Props) {
 	return (
-		<DefaultLayout className="page-with-sidebar" isLoading={isLoading} error={error}>
+		<DefaultLayout hasSidebar isLoading={isLoading} error={error}>
 			<PodcastSidebarInfo className="sidebar-section" podcast={podcast} />
 			<section className="content-section">
 				{!podcast && <div>Loading...</div>}

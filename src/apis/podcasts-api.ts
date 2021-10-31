@@ -34,6 +34,11 @@ export async function getBestPodcasts(): Promise<Podcast[]> {
 }
 
 export async function getPodcastDetail(podcastId: string): Promise<Podcast> {
+	// Fail for "Tutti Frutti por Sopitas" podcast so we can see the error handling
+	if (podcastId === '0301a1f7621a49c8875a8cefa6af44c5') {
+		return Promise.reject(new Error('There has been a problem loading this podcast'));
+	}
+
 	const data: LNPodcast = await request(`/podcasts/${podcastId}`, {
 		// next_episode_pub_date: 1479154463000,
 		sort: 'recent_first'

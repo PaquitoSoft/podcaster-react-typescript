@@ -3,24 +3,25 @@
 	text-align: right;
 }
 
-.podcasts-filter .badge {
+.podcasts-filter__badge {
 	display: inline-block;
-	color: #fff;
+	color: var(--background-color-000);
 	font-size: 25px;
+	line-height: 30px;
 	padding: 3px 7px;
 	border-radius: 5px;
 	position: relative;
 	top: 5px;
 	min-width: 40px;
-	background-color: #337ab7;
+	background-color: var(--primary-color-000);
 	text-align: center;
 }
 
-.podcasts-filter input[name="filter-value"] {
+.podcasts-filter__filter {
 	display: inline-block;
 	width: 25%;
 	margin-left: 10px;
-	border: 1px solid #ccc;
+	border: 1px solid var(--background-color-020);
 	line-height: 28px;
 	border-radius: 5px;
 	padding: 7px;

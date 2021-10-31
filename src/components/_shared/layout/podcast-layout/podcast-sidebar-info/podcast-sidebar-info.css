@@ -1,30 +1,28 @@
-.podcast-cover img {
+.podcast-sidebar-info__cover {
 	width: 100%;
 	margin-top: 10px;
 	border-radius: 5px;
 }
-.podcast-title {
+
+.podcast-sidebar-info__main-info {
 	padding-left: 10px;
 }
-.podcast-title a {
-	color: #000000;
-}
-.podcast-title .title {
+.podcast-sidebar-info__title {
 	font-size: 16px;
 	font-weight: bold;
 }
-.podcast-title .author {
+.podcast-sidebar-info__author {
 	font-style: italic;
 }
-.podcast-description {
+.podcast-sidebar-info__description {
 	font-size: 14px;
 	padding-left: 5px;
 }
-.podcast-description div {
+.podcast-sidebar-info__description-title {
 	font-weight: bold;
 	margin-bottom: 5px;
 }
-.podcast-description p {
+.podcast-sidebar-info__description-content {
 	font-style: italic;
 	overflow-x: hidden;
 	text-overflow: ellipsis;

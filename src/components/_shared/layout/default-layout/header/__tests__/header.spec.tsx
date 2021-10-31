@@ -8,13 +8,13 @@ describe('Header', () => {
 		renderWithRouter(<Header showLoader={false} />);
 
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
-		expect(screen.getByTestId('loader-indicator')).toHaveClass('hidden');
+		expect(screen.getByTestId('loader-indicator')).toHaveClass('header__spinner--off');
 	});
 
 	it('Should render component with loader', () => {
 		renderWithRouter(<Header showLoader={true} />);
 
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
-		expect(screen.getByTestId('loader-indicator')).not.toHaveClass('hidden');
+		expect(screen.getByTestId('loader-indicator')).toHaveClass('header__spinner--on');
 	});
 });

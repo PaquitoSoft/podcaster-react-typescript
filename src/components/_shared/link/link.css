@@ -1,0 +1,18 @@
+.link,
+.link:visited {
+	color: var(--primary-color-000);
+}
+
+.link:active {
+	color: var(--primary-color-010);
+}
+
+.link--type-secondary,
+.link--type-secondary:visited,
+.link--type-secondary:active {
+	color: var(--foregroung-color);
+}
+
+.link--decoration-none {
+	text-decoration: none;
+}
