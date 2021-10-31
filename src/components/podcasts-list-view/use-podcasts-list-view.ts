@@ -7,7 +7,6 @@ import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 type HookState = {
 	podcasts: Podcast[];
 	loadError?: Error;
-	isLoading: boolean
 };
 
 // type HookActions = {
@@ -27,7 +26,7 @@ function usePodcastsListView(): HookResponse {
 	const [originalPodcasts, setOriginalPodcasts] = useState<Podcast[]>([]);
 	const [filteredPodcasts, setFilteredPodcasts] = useState<Podcast[]>([]);
 	
-	const { data: podcasts, error, isLoading } = useRemoteData(getBestPodcasts);
+	const { data: podcasts } = useRemoteData(getBestPodcasts);
 
 	const filterPodcasts = (text: string) => setFilterText(text);
 	
@@ -44,9 +43,7 @@ function usePodcastsListView(): HookResponse {
 
 	return {
 		state: {
-			podcasts: filteredPodcasts,
-			loadError: error as Error,
-			isLoading
+			podcasts: filteredPodcasts
 		},
 		actions: {
 			filterPodcasts

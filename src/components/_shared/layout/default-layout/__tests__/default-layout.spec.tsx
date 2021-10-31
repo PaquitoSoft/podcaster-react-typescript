@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import { renderWithRouter } from '../../../../../support/custom-render';
+import { mockUseGenericError } from '../../../../../support/mock-providers';
 
 import DefaultLayout from '../default-layout';
 
@@ -25,9 +26,10 @@ describe('DefaultLayout', () => {
 		expect(screen.getByRole('main')).toHaveClass(customClass);
 	});
 
-	it('Should display an error if provided', () => {
+	it('Should display an error if there is a generic one in the context', () => {
 		const errorMessage = 'Ouch!';
-		renderWithRouter(<DefaultLayout error={new Error(errorMessage)}><span>Foo</span></DefaultLayout>);
+		mockUseGenericError(new Error(errorMessage))
+		renderWithRouter(<DefaultLayout><span>Foo</span></DefaultLayout>);
 		
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();
 	});

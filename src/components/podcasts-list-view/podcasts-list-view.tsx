@@ -8,9 +8,7 @@ import usePodcastsListView from "./use-podcasts-list-view";
 function PodcastsListView() {
 	const {
 		state: {
-			podcasts,
-			loadError,
-			isLoading
+			podcasts
 		},
 		actions: {
 			filterPodcasts
@@ -18,7 +16,7 @@ function PodcastsListView() {
 	} = usePodcastsListView();
 
 	return (
-		<Layout isLoading={isLoading} error={loadError} >
+		<Layout>
 			<div className="podcasts-list-view">
 				<PodcastsFilter filteredPodcastsCount={podcasts.length} onFilter={filterPodcasts} />
 				<div className="podcasts-list-view__list">

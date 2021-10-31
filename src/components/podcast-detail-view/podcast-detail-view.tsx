@@ -18,11 +18,11 @@ function PodcastDetailView() {
 	const { podcastId } = useParams<ViewURLParams>();
 	const loader = useCallback(() => getPodcastDetail(podcastId), [podcastId]);
 
-	const { data, error, isLoading } = useRemoteData(loader);
+	const { data } = useRemoteData(loader);
 	const podcast = data as Podcast;
 
 	return (
-		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
+		<PodcastLayout podcast={podcast}>
 			 <div className="podcast-detail-view page-with-sidebar">
 				<section className="content-section">
 					<div className="section podcast-detail-view__episodes-count">

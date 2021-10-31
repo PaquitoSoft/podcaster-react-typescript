@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react';
+import { useGenericError, useLoader } from '../../app/application-providers/application-providers';
 
 type HookState = {
 	data?: any;
-	isLoading: boolean;
-	error?: Error
 };
 
 function useRemoteData(remoteLoader: Function): HookState {
+	const { startLoader, stopLoader } = useLoader();
+	const { setError } = useGenericError();
 	const [remoteData, setRemoteData] = useState<HookState>({
-		data: undefined,
-		isLoading: true,
-		error: undefined
+		data: undefined
 	});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+				startLoader();
 				const data = await remoteLoader();
-				setRemoteData({ data, isLoading: false });
+				setRemoteData({ data });
 			} catch (error) {
-				setRemoteData({ error: error as Error, isLoading: false });
+				setError(error as Error);
+			} finally {
+				stopLoader();
 			}
 		};
 
 		fetchData();
-	}, [remoteLoader]);
+	}, [remoteLoader, setError, startLoader, stopLoader]);
 
 	return remoteData;
 }

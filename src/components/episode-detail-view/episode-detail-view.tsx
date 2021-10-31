@@ -18,12 +18,12 @@ function EpisodeDetailView() {
 	const { podcastId, episodeId } = useParams<ViewURLParams>();
 	const loader = useCallback(() => getPodcastDetail(podcastId), [podcastId]);
 
-	const { data, error, isLoading } = useRemoteData(loader);
+	const { data } = useRemoteData(loader);
 	const podcast = data as Podcast;
 	const episode = podcast?.episodes.find(episode => episode.id === episodeId);
 
 	return (
-		<PodcastLayout podcast={podcast} isLoading={isLoading} error={error}>
+		<PodcastLayout podcast={podcast}>
 			<div className="episode-detail-view page-with-sidebar">
 				<div className="content-section">
 					<div className="section">

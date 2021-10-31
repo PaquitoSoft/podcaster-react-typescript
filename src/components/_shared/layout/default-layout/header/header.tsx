@@ -1,18 +1,17 @@
+import { useLoader } from '../../../../app/application-providers/application-providers';
+
 import Link from '../../../link/link';
 
 import './header.css';
 
-type Props = {
-	showLoader: boolean
-};
-
-function Header({ showLoader }: Props) {
+function Header() {
+	const { isLoading } = useLoader();
 	return (
 		<header className="header">
 			<h1>
 				<Link to="/">Podcaster</Link>
 				<div 
-					className={`header__spinner header__spinner--${showLoader ? 'on' : 'off' }`}
+					className={`header__spinner header__spinner--${isLoading ? 'on' : 'off' }`}
 					data-testid="loader-indicator"
 				>
 					<div className="header__double-bounce1"></div>

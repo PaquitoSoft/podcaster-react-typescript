@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 
 type ProviderProps = {
 	children: JSX.Element | JSX.Element[];
@@ -6,27 +6,30 @@ type ProviderProps = {
 
 type ContextType = {
 	error?: Error;
-	updateError: (error: Error) => void;
+	setError: (error: Error) => void;
+	resetError: () => void;
 }
 
 const GenericErrrorContext = createContext<ContextType>({
 	error: undefined,
-	updateError: (error: Error) => { return }
+	setError: (error: Error) => { return },
+	resetError: () => { return }
 });
 GenericErrrorContext.displayName = 'ThemeContext';
 
 export const GenericErrorProvider = ({ children }: ProviderProps) => {
 	const [error, setError] = useState<Error>();
+	const resetError = useCallback(() => setError(undefined), []);
 	return (
 		<GenericErrrorContext.Provider
-			value={{ error, updateError: setError }}
+			value={{ error, setError, resetError }}
 		>
 			{children}
 		</GenericErrrorContext.Provider>
 	)
 }
 
-export const useGenericError = () => {
+export const useGenericError = (): ContextType => {
 	const context = useContext(GenericErrrorContext);
 
 	if (!context) {

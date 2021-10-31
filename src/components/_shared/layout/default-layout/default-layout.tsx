@@ -2,20 +2,20 @@ import Header from "./header/header";
 import ErrorMessage from "./error-message/error-message";
 
 import './default-layout.css';
+import { useGenericError } from "../../../app/application-providers/application-providers";
 
 type Props = {
 	children: JSX.Element | JSX.Element[],
 	className?: string,
-	hasSidebar?: boolean,
-	isLoading?: boolean,
-	error?: Error
+	hasSidebar?: boolean
 };
 
-function Layout({ children, className, error, hasSidebar = false, isLoading = false }: Props) {
+function Layout({ children, className, hasSidebar = false }: Props) {
+	const { error, resetError } = useGenericError();
 	return (
 		<div id="app" className={`layout`}>
-			<Header showLoader={isLoading} />
-			{error && <ErrorMessage error={error} />}
+			<Header />
+			{error && <ErrorMessage error={error} onClose={resetError} />}
 			{!error && <main className={`layout__main-content ${hasSidebar ? 'layout__main-content--with-sidebar' : ''} ${className || ''}`}>{children}</main>}
 		</div>
 	);

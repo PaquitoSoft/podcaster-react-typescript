@@ -44,10 +44,10 @@
     ]
   },
   "jest": {
-	  "coveragePathIgnorePatterns": [
-		"<rootDir>/src/index.ts",
-		"<rootDir>/src/reportWebVitals.ts"
-	  ]
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.ts",
+      "<rootDir>/src/reportWebVitals.ts"
+    ]
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
