@@ -1,37 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import UrlPattern from "url-pattern";
-import Dictionary from "../../../types/dictionary-type";
-import { useLoader } from "../loader-provider/loader-provider";
+import { createContext, useContext, useEffect } from "react";
+import useRouterInternal, { RouteViewProps, RouteConfig } from "./use-router-internal";
 
 const RouterContext = createContext({
+	request: {},
 	navigateTo: (url: string) => { return }
 });
 
 RouterContext.displayName = 'RouterContext';
-
-export type RequestInfo = {
-	url: string;
-	searchParams: Dictionary<string>;
-	pathParams?: Dictionary<string>;
-};
-
-export type RouteViewProps = {
-	remoteData: any;
-	request: RequestInfo;
-};
-
-export interface AsyncComponent extends React.FC<RouteViewProps> {
-	fetchData?: ({ url, pathParams, searchParams }: {
-		url: string;
-		pathParams: Dictionary<string>,
-		searchParams: Dictionary<string>
-	}) => Promise<any>
-}
-
-type RouteConfig = {
-	pattern: string;
-	component: AsyncComponent;
-}
 
 type ProviderProps = {
 	configuration: RouteConfig[];
@@ -39,95 +14,16 @@ type ProviderProps = {
 	pageNotFoundComponent: React.FC;
 };
 
-type MatchedComponent = {
-	component: AsyncComponent;
-	pathParams: Dictionary<string>;
-}
-
-type NavigationContext = {
-	currentComponent?: AsyncComponent;
-	remoteData?: any;
-	request: RequestInfo;
-};
-
-
-const matchComponent = (urlPath: string, routesConfig: RouteConfig[]): MatchedComponent | null => {
-	let component, pathParams;
-	for (let index = 0, len = routesConfig.length; index < len; index++) {
-		const pattern = new UrlPattern(routesConfig[index].pattern);
-		const match = pattern.match(urlPath);
-		if (match) {
-			component = routesConfig[index].component;
-			pathParams = match
-			break;
-		}
-	}
-
-	return component ? { component, pathParams } : null;
-}
-
-export const Router = ({ configuration, splashScreenComponent, pageNotFoundComponent }: ProviderProps) => {
-	const [navigationContext, setNavigationContext] = useState<NavigationContext>({
-		currentComponent: splashScreenComponent,
-		request: {
-			url: window.location.href,
-			searchParams: Object.fromEntries(new URLSearchParams(window.location.search))
-		}
+export const Router = ({
+	configuration,
+	splashScreenComponent,
+	pageNotFoundComponent
+}: ProviderProps) => {
+	const { state: { navigationContext }, actions: { navigateTo } } = useRouterInternal({
+		routerConfiguration: configuration,
+		splashScreenComponent,
+		pageNotFoundComponent
 	});
-	const { startLoader, stopLoader } = useLoader();
-
-	const navigateTo = useCallback((url: string) => {
-		startLoader();
-		const newUrl = new URL(url, !url.startsWith('http') ? `${window.location.protocol}//${window.location.hostname}` : undefined);
-		const match = matchComponent(newUrl.pathname, configuration);
-		const requestInfo = {
-			url,
-			searchParams: Object.fromEntries(newUrl.searchParams),
-		};
-		if (match) {
-			if (match.component.fetchData) {
-				match.component.fetchData({
-					url: newUrl.href,
-					pathParams: match.pathParams,
-					searchParams: requestInfo.searchParams
-				})
-					.then(data => {
-						setNavigationContext({
-							currentComponent: match.component,
-							remoteData: data,
-							request: {
-								...requestInfo,
-								pathParams: match.pathParams
-							}
-						})
-						window.history.pushState(null, '', url);
-						window.scrollTo({top: 0, behavior: 'smooth'})
-					})
-					.catch(error => {
-						console.error('Navigation error:', error);
-					})
-					.finally(stopLoader);
-			} else {
-				setNavigationContext({
-					currentComponent: match.component,
-					request: {
-						...requestInfo,
-						pathParams: match.pathParams
-					}
-				});
-				window.history.pushState(null, '', url);
-				window.scrollTo({top: 0, behavior: 'smooth'})
-				stopLoader();
-			}
-		} else {
-			setNavigationContext({
-				currentComponent: pageNotFoundComponent,
-				request: requestInfo 
-			});
-			window.scrollTo({top: 0, behavior: 'smooth'})
-			stopLoader();
-		}
-	}, [startLoader, configuration, stopLoader, pageNotFoundComponent]);
 
 	useEffect(() => {
 		navigateTo(window.location.href);
@@ -137,6 +33,7 @@ export const Router = ({ configuration, splashScreenComponent, pageNotFoundCompo
 	return (
 		<RouterContext.Provider 
 			value={{
+				request: navigationContext.request,
 				navigateTo
 			}}
 		>
@@ -154,3 +51,5 @@ export const useRouter = () => {
 
 	return context;
 };
+
+export type { RouteViewProps };
