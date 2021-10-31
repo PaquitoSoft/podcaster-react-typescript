@@ -6,7 +6,6 @@ import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 
 type HookState = {
 	podcasts: Podcast[];
-	loadError?: Error;
 };
 
 // type HookActions = {
