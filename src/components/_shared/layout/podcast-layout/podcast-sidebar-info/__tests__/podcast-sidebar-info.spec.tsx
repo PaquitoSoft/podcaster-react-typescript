@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../../../support/custom-render';
+import { renderWithApplicationProviders } from '../../../../../../support/custom-render';
 import { getFakePodcast } from '../../../../../__fixtures__/podcasts-fixtures';
 
 import PodcastSidebarInfo from '../podcast-sidebar-info';
@@ -7,7 +7,7 @@ import PodcastSidebarInfo from '../podcast-sidebar-info';
 describe('PodcastSidebarInfo', () => {
 	it('Should render podcast info', () => {
 		const fakePodcast = getFakePodcast();
-		renderWithRouter(<PodcastSidebarInfo podcast={fakePodcast} />);
+		renderWithApplicationProviders(<PodcastSidebarInfo podcast={fakePodcast} />);
 
 		const image = screen.getByAltText(fakePodcast.title);
 		expect(image).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('PodcastSidebarInfo', () => {
 	it('Should render with custom class', () => {
 		const fakePodcast = getFakePodcast();
 		const customClass = 'bar';
-		renderWithRouter(<PodcastSidebarInfo podcast={fakePodcast} className={customClass} />);
+		renderWithApplicationProviders(<PodcastSidebarInfo podcast={fakePodcast} className={customClass} />);
 
 		expect(screen.getByRole('complementary')).toHaveClass(customClass);
 	});

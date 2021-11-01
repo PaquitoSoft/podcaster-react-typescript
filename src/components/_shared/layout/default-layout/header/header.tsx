@@ -1,6 +1,7 @@
 import { useLoader } from '../../../../app/application-providers/application-providers';
 
 import Link from '../../../link/link';
+import Translation from '../../../translation/translation';
 
 import './header.css';
 
@@ -9,7 +10,7 @@ function Header() {
 	return (
 		<header className="header">
 			<h1>
-				<Link to="/">Podcaster</Link>
+				<Link to="/"><Translation name="main.title"/></Link>
 				<div 
 					className={`header__spinner header__spinner--${isLoading ? 'on' : 'off' }`}
 					data-testid="loader-indicator"

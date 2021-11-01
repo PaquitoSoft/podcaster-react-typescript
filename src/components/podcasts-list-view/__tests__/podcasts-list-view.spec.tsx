@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
-import { renderWithRouter } from "../../../support/custom-render";
+import { renderWithApplicationProviders } from "../../../support/custom-render";
 import { mockBestPodcastsRequest } from "../../../support/mock-server";
 
 import PodcastsListView from "../podcasts-list-view";
@@ -12,7 +12,7 @@ describe('PodcastsListView', () => {
 
 	it('Should render async loaded list', async () => {
 		mockBestPodcastsRequest();
-		renderWithRouter(<PodcastsListView />);
+		renderWithApplicationProviders(<PodcastsListView />);
 
 		// No list while fetching remote data
 		expect(screen.getByPlaceholderText('Filter podcasts...')).toBeInTheDocument();
@@ -24,7 +24,7 @@ describe('PodcastsListView', () => {
 
 	it('Should render filtered list', async () => {
 		mockBestPodcastsRequest();
-		renderWithRouter(<PodcastsListView />);
+		renderWithApplicationProviders(<PodcastsListView />);
 
 		let podcasts = screen.queryAllByTestId(PODCAST_CARD_TEST_ID);
 		expect(podcasts).toHaveLength(0);

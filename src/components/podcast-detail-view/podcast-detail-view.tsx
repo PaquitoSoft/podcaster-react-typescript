@@ -5,6 +5,7 @@ import Podcast from '../../entities/podcast';
 
 import Link, { LinkDecoration } from '../_shared/link/link';
 import PodcastLayout from '../_shared/layout/podcast-layout/podcast-layout';
+import Translation from '../_shared/translation/translation';
 import TimeFormatter from '../_shared/time-formatter/time-formatter';
 import useRemoteData from '../_shared/use-remote-data/use-remote-data';
 
@@ -27,16 +28,19 @@ function PodcastDetailView() {
 				<section className="content-section">
 					<div className="section podcast-detail-view__episodes-count">
 						<span>
-							Episodes: {podcast?.episodes.length}
+							<Translation
+								name="podcast-detail-view.episodes-count"
+								params={{ count: podcast?.episodes.length }}
+							/>
 						</span>
 					</div>
 					<div className="section">
 						<table className="podcast-detail-view__table">
 							<thead>
 								<tr>
-									<th>Title</th>
-									<th>Date</th>
-									<th>Duration</th>
+									<th><Translation name="podcast-detail-view.episodes-table-title" /></th>
+									<th><Translation name="podcast-detail-view.episodes-table-date" /></th>
+									<th><Translation name="podcast-detail-view.episodes-table-duration" /></th>
 								</tr>
 							</thead>
 							<tbody>

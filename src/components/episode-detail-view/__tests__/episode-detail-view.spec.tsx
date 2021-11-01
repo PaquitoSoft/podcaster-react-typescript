@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 
-import { renderWithRouter } from '../../../support/custom-render';
+import { renderWithApplicationProviders } from '../../../support/custom-render';
 import { mockPodcastDetailRequest } from '../../../support/mock-server';
 import { getPodcastDetailResponseData } from '../../__fixtures__/ln-fixtures';
 
@@ -19,7 +19,7 @@ jest.mock('react-router-dom', () => ({
 describe('EpisodeDetailView', () => {
 	it('Should render sidebar and episode content', async () => {
 		mockPodcastDetailRequest();
-		const { container } = renderWithRouter(<EpisodeDetailView />);
+		const { container } = renderWithApplicationProviders(<EpisodeDetailView />);
 
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
 		// No podcast nor episode content while fetching remote data

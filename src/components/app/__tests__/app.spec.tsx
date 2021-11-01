@@ -9,7 +9,7 @@ describe('App', () => {
 	it('Should render default view', () => {
 		mockBestPodcastsRequest();
 	
-		render(<App />);
+		render(<App initialLocale="en" initialTranslations={{ 'main.title': 'Podcaster' }} />);
 		const linkElement = screen.getByText(/Podcaster/i);
 		expect(linkElement).toBeInTheDocument();
 	});

@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithRouter } from '../../../../../support/custom-render';
+import { renderWithApplicationProviders } from '../../../../../support/custom-render';
 import { mockUseGenericError } from '../../../../../support/mock-providers';
 
 import DefaultLayout from '../default-layout';
@@ -11,7 +11,7 @@ import DefaultLayout from '../default-layout';
 describe('DefaultLayout', () => {
 	it('Should render header and main content', () => {
 		const mainText = 'Foo Bar';
-		renderWithRouter(<DefaultLayout><span>{mainText}</span></DefaultLayout>);
+		renderWithApplicationProviders(<DefaultLayout><span>{mainText}</span></DefaultLayout>);
 
 		// Header title
 		expect(screen.getByText('Podcaster')).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe('DefaultLayout', () => {
 
 	it('Should add provided className to main content', () => {
 		const customClass = 'foo';
-		renderWithRouter(<DefaultLayout className={customClass}><span>Bar</span></DefaultLayout>);
+		renderWithApplicationProviders(<DefaultLayout className={customClass}><span>Bar</span></DefaultLayout>);
 
 		expect(screen.getByRole('main')).toHaveClass(customClass);
 	});
@@ -29,7 +29,7 @@ describe('DefaultLayout', () => {
 	it('Should display an error if there is a generic one in the context', () => {
 		const errorMessage = 'Ouch!';
 		mockUseGenericError(new Error(errorMessage))
-		renderWithRouter(<DefaultLayout><span>Foo</span></DefaultLayout>);
+		renderWithApplicationProviders(<DefaultLayout><span>Foo</span></DefaultLayout>);
 		
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();
 	});

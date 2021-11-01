@@ -1,6 +1,7 @@
 import Podcast from '../../../../../entities/podcast';
 import Link, { LinkType } from '../../../link/link';
 import Separator from '../../../separator/separator';
+import Translation from '../../../translation/translation';
 
 import './podcast-sidebar-info.css';
 
@@ -25,7 +26,7 @@ function PodcastSidebarInfo({ podcast, className }: Props) {
 				</div>
 				<Separator />
 				<div className="podcast-sidebar-info__description">
-					<div className="podcast-sidebar-info__description-title">Description:</div>
+					<div className="podcast-sidebar-info__description-title"><Translation name="podcast-sidebar-info.description" /></div>
 					<div className="podcast-sidebar-info__description-content" dangerouslySetInnerHTML={{ __html: podcast?.description || '' }}></div>
 				</div>
 			</div>
