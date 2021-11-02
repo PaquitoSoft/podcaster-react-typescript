@@ -10,7 +10,15 @@
 	--main-content-width: 85%;
 }
 
-@media (prefers-color-scheme: dark) {
+.theme--dark {
+	--foregroung-color: #fff;
+	--background-color-000: #000;
+	--background-color-010: #1d1c1c;
+	--background-color-020: #2b2929;
+	--primary-color-000: #337ab7;
+	--primary-color-010: #23527c;
+}
+/* @media (prefers-color-scheme: dark) {
 	:root {
 		--foregroung-color: #fff;
 		--background-color-000: #000;
@@ -19,7 +27,7 @@
 		--primary-color-000: #337ab7;
 		--primary-color-010: #23527c;
 	}	
-}
+} */
 
 html {
 	font-family: Arial;

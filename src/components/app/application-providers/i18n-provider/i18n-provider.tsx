@@ -2,12 +2,19 @@ import { createContext, useCallback, useContext, useState } from "react";
 import { getTranslationsByLocale } from "../../../../apis/translations-api";
 import Dictionary from "../../../../types/dictionary-type";
 
+export enum LOCALE {
+	EN = 'en',
+	ES = 'es'
+};
+
 type ContextType = {
+	locale: LOCALE;
 	getText: (key: string, options?: { params: any }) => string;
-	changeLocale: (newLocale: string) => Promise<void>;
+	changeLocale: (newLocale: LOCALE) => Promise<void>;
 }
 
 const I18NContext = createContext<ContextType>({
+	locale: LOCALE.EN,
 	getText: () => '__',
 	changeLocale: () => Promise.resolve()
 });
@@ -15,7 +22,7 @@ const I18NContext = createContext<ContextType>({
 I18NContext.displayName = 'I18NContext';
 
 type ProviderProps = {
-	initialLocale: string;
+	initialLocale: LOCALE;
 	initialTranslations: Dictionary<string>;
 	children: JSX.Element;
 };
@@ -40,7 +47,7 @@ const resolveTranslation = (
 export const I18NProvider = ({ initialLocale, initialTranslations, children }: ProviderProps) => {
 	const [i18nData, setI18nData] = useState({ locale: initialLocale, translations: initialTranslations });
 
-	const changeLocale = useCallback(async (newLocale: string) => {
+	const changeLocale = useCallback(async (newLocale: LOCALE) => {
 		try {
 			const translations = await getTranslationsByLocale(newLocale);
 			setI18nData({ locale: newLocale, translations });
@@ -58,7 +65,7 @@ export const I18NProvider = ({ initialLocale, initialTranslations, children }: P
 	}, [i18nData.translations]);
 
 	return (
-		<I18NContext.Provider value={{ getText, changeLocale }}>
+		<I18NContext.Provider value={{ locale: i18nData.locale, getText, changeLocale }}>
 			{children}
 		</I18NContext.Provider>
 	);

@@ -3,6 +3,7 @@ import ErrorMessage from "./error-message/error-message";
 
 import './default-layout.css';
 import { useGenericError } from "../../../app/application-providers/application-providers";
+import Footer from "./footer/footer";
 
 type Props = {
 	children: JSX.Element | JSX.Element[],
@@ -17,6 +18,7 @@ function Layout({ children, className, hasSidebar = false }: Props) {
 			<Header />
 			{error && <ErrorMessage error={error} onClose={resetError} />}
 			{!error && <main className={`layout__main-content ${hasSidebar ? 'layout__main-content--with-sidebar' : ''} ${className || ''}`}>{children}</main>}
+			<Footer />
 		</div>
 	);
 }

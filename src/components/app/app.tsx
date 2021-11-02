@@ -4,6 +4,7 @@ import {
 	Route
 } from "react-router-dom";
 
+import { LOCALE } from "./application-providers/i18n-provider/i18n-provider";
 import ApplicationProviders from "./application-providers/application-providers";
 import PodcastsListView from '../podcasts-list-view/podcasts-list-view';
 import PodcastDetailView from "../podcast-detail-view/podcast-detail-view";
@@ -11,7 +12,7 @@ import EpisodeDetailView from "../episode-detail-view/episode-detail-view";
 import Dictionary from "../../types/dictionary-type";
 
 type Props = {
-	initialLocale: string;
+	initialLocale: LOCALE;
 	initialTranslations: Dictionary<string>;
 };
 

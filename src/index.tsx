@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { getTranslationsByLocale } from './apis/translations-api';
 import App from './components/app/app';
+import { LOCALE } from './components/app/application-providers/i18n-provider/i18n-provider';
 
 import reportWebVitals from './reportWebVitals';
 
 async function initialize() {
 
 	try {
-		const locale = navigator.language.substring(0, 2);
+		const locale = navigator.language.substring(0, 2) as LOCALE;
 		const translations = await getTranslationsByLocale(locale);
 
 		ReactDOM.render(

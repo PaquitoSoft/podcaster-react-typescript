@@ -3,7 +3,8 @@ import { createContext, useContext, useState } from 'react';
 import './theme-provider.css';
 
 export enum ThemeName {
-	BASE = 'base'
+	LIGHT = 'light',
+	DARK = 'dark'
 };
 
 type ProviderProps = {
@@ -11,17 +12,17 @@ type ProviderProps = {
 };
 
 const ThemeContext = createContext({
-	themeName: ThemeName.BASE,
-	updateTheme: (themeName: ThemeName) => { return }
+	themeName: ThemeName.LIGHT,
+	changeTheme: (themeName: ThemeName) => { return }
 });
 ThemeContext.displayName = 'ThemeContext';
 
 export const ThemeProvider = ({ children }: ProviderProps) => {
-	const [themeName, setThemeName] = useState<ThemeName>(ThemeName.BASE);
+	const [themeName, setThemeName] = useState<ThemeName>(ThemeName.LIGHT);
 	return (
 		<ThemeContext.Provider value={{
 			themeName: themeName,
-			updateTheme: setThemeName
+			changeTheme: setThemeName
 		}}>
 			<div className={`theme theme--${themeName}`}>{children}</div>
 		</ThemeContext.Provider>
