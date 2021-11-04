@@ -24,7 +24,9 @@ function Footer() {
 	return (
 		<footer className="app-footer">
 			<section>
-				<label htmlFor="language-selector"><Translation name="main.language-selector" /></label>
+				<label className="app-footer__label" htmlFor="language-selector">
+					<Translation name="main.language-selector" />
+				</label>
 				<select
 					name="language-selector"
 					id="language-selector"
@@ -36,7 +38,9 @@ function Footer() {
 				</select>
 			</section>
 			<section>
-				<label htmlFor="theme-selector"><Translation name="main.theme-selector" /></label>
+				<label className="app-footer__label" htmlFor="theme-selector">
+					<Translation name="main.theme-selector" />
+				</label>
 				<select
 					name="theme-selector"
 					id="theme-selector"

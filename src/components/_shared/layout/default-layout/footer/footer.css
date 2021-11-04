@@ -1,4 +1,6 @@
 .app-footer {
+	border-top: 1px solid var(--background-color-010);
+	padding-top: 20px;
 	width: var(--main-content-width);
 	left: 0;
 	right: 0;
@@ -6,4 +8,8 @@
 	margin-right: auto;
 	display: flex;
 	justify-content: space-between;
+}
+
+.app-footer__label {
+	margin-right: 10px;
 }
